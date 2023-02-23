@@ -1,8 +1,8 @@
-package com.ch5.Reflection.Entity;
+package com.ch6.Interface.Entity;
 
 import java.util.Date;
 
-public class Employee {
+public class Employee implements Comparable<Employee>,Cloneable{
     private String name;
     private double salary;
 
@@ -47,5 +47,25 @@ public class Employee {
 
     public void raiseSalary(double rate){
         this.salary *= (1+rate);
+    }
+
+
+    @Override
+    public int compareTo(Employee o) {
+        return Double.compare(salary,o.salary);
+    }
+
+    //浅拷贝 子对象引用共享内存
+//    @Override
+//    public Employee clone() throws CloneNotSupportedException {
+//        return (Employee)super.clone();
+//    }
+
+    //深拷贝 同时克隆子对象
+    @Override
+    public Employee clone() throws CloneNotSupportedException {
+        Employee clone = (Employee) super.clone();
+        clone.HireDay=(Date)this.HireDay.clone();
+        return clone;
     }
 }
