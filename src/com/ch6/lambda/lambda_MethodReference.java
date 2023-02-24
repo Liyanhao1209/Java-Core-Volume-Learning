@@ -2,7 +2,6 @@ package com.ch6.lambda;
 
 import javax.swing.*;
 import java.nio.file.DirectoryStream;
-import java.util.Comparator;
 
 public class lambda_MethodReference {
     public static void main(String[] args) {
