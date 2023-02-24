@@ -5,6 +5,7 @@ import java.util.Comparator;
 public class lambda_Grammar {
     public static void main(String[] args) {
 
+        //lambda表达式的值并非是一个对象，而是某个接口待实现的方法
         Comparator<String> stringComparator =
                 (String first, String second) -> {
                     if (first.length() < second.length()) return -1;
