@@ -1,39 +1,11 @@
-package com.ch12;
+package com.ch12.ReentrantLock;
 
-class Bank{
-    private double[] accounts;
-    private int numOfAccount;
+import com.ch12.ReentrantLock.Entity.Bank;
 
-    public Bank(int numOfAccount,double initMoney){
-        this.numOfAccount = numOfAccount;
-        accounts = new double[this.numOfAccount];
-        //这个赋值是错的 account是accounts[i]的一个副本引用，实际上指向了initMoney,但accounts[i]没有改变指向的内存
-//        for (double account : accounts) {
-//            account = initMoney;
-//        }
-        for (int i = 0; i < accounts.length; i++) {
-            accounts[i]=initMoney;
-        }
-    }
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
-    public void transfer(int from,int to,double money){
-        if(from<0||to>=this.numOfAccount){return;}
-        if(accounts[from]<money){return;}
-        System.out.print(Thread.currentThread());
-        accounts[from]-=money;
-        System.out.printf(" %10.2f from %d to %d",money,from,to);
-        accounts[to]+=money;
-        System.out.printf(" Total Balance: %10.2f%n",getTotalBalance());
-    }
 
-    private double getTotalBalance() {
-        double sum = 0;
-        for (double account : accounts) {
-            sum += account;
-        }
-        return sum;
-    }
-}
 
 public class Thread_StartUp {
 
