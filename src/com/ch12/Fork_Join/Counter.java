@@ -30,8 +30,12 @@ public class Counter extends RecursiveTask<Integer> {
         }
         else{
             int mid = (from+to)/2;
+//            System.out.println("subTask from "+from +" to "+mid);
             Counter first = new Counter(values, from, mid, filter);
+//            System.out.println("subTask from "+mid +" to "+to);
             Counter second = new Counter(values, mid, to, filter);
+            invokeAll(first,second);
+//            System.out.println(first.join()+second.join());
             return first.join()+second.join();
         }
     }

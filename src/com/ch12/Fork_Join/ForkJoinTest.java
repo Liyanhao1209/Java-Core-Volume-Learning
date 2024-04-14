@@ -19,11 +19,12 @@ public class ForkJoinTest {
 
     public static void main(String[] args) {
         //采用fork-join框架统计一个数组中有多少个元素满足某个特定的属性
-        final int SIZE = 10000000;
+        final int SIZE = 10000;
         double[] numbers = new double[SIZE];
         for (int i = 0; i < SIZE; i++) {
             numbers[i]=Math.random();
         }
+
 
         /**
          * boolean test(double x){return x>0.5;}
